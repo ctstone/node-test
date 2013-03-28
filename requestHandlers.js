@@ -16,6 +16,7 @@ exports.start = function (response) {
     '</form>'+
     '</body>'+
     '</html>';
+  body = 'Hello World\n';
 
   response.writeHead(200, { 'Content-Type': 'text/html' });
   response.write(body);

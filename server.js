@@ -1,11 +1,11 @@
-var http = require('http');
-var url = require('url');
+var myserver = require('./myserver');
+var router = require('./router');
+var requestHandlers = require('./requestHandlers');
 
-exports.start = function (route, handle) {
-  http.createServer(function (request, response) {
-    var pathname = url.parse(request.url).pathname;
-    route(handle, pathname, response, request);
-  }).listen(8888);
-
-  console.log('Server running');
-}
+var handle = {
+  '/': requestHandlers.start,
+  '/start': requestHandlers.start,
+  //'/upload': requestHandlers.upload,
+  '/show': requestHandlers.show,
+};
+myserver.start(router.route, handle);
